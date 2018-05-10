@@ -1,48 +1,44 @@
 <template>
   <div id="app" class="container">
     <div class="page-header">
-      <h1>Vue.js 2 & Firebase <small>Sample Application by CodingTheSmartWay.com</small></h1>
+      <h1>Megan's Quote Board App</h1>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Add New Books</h3>
+        <h3 class="panel-title">Add a Quote</h3>
       </div>
       <div class="panel-body">
-         <form id="form" class="form-inline" v-on:submit.prevent="addBook">
+         <form id="form" class="form-inline" v-on:submit.prevent="addQuote">
           <div class="form-group">
-            <label for="bookTitle">Title:</label>
-            <input type="text" id="bookTitle" class="form-control" v-model="newBook.title">
+            <label for="quoteTitle">Quote:</label>
+            <input type="text" id="quoteTitle" class="form-control" v-model="newQuote.title">
           </div>
           <div class="form-group">
-            <label for="bookAuthor">Author:</label>
-            <input type="text" id="bookAuthor" class="form-control" v-model="newBook.author">
+            <label for="quoteAuthor">Author:</label>
+            <input type="text" id="quoteAuthor" class="form-control" v-model="newQuote.author">
           </div>
-          <div class="form-group">
-            <label for="bookUrl">Url:</label>
-            <input type="text" id="bookUrl" class="form-control" v-model="newBook.url">
-          </div>
-          <input type="submit" class="btn btn-primary" value="Add Book">
+          <input type="submit" class="btn btn-primary" value="Add Quote">
         </form>
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Book List</h3>
+        <h3 class="panel-title">Quote List</h3>
       </div>
       <div class="panel-body">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Title</th>
+              <th>Quote</th>
               <th>Author</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="book in books">
-              <td><a v-bind:href="book.url">{{book.title}}</a></td>
-              <td>{{book.author}}</td>
-              <td><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeBook(book)"></span></td>
+            <tr v-for="quote in quotes">
+              <td>{{quote.title}}</td>
+              <td>{{quote.author}}</td>
+              <td><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></td>
             </tr>
           </tbody>
         </table>
@@ -65,34 +61,32 @@ let config = {
   
 let app = Firebase.initializeApp(config)
 let db = app.database()
-let booksRef = db.ref('books')
+let quotesRef = db.ref('quotes')
 
 export default {
   name: 'app',
   firebase: {
-    books: booksRef
+    quotes: quotesRef
   },
   
   data () {
     return {
-      newBook: {
+      newQuote: {
           title: '',
-          author: '',
-          url: 'http://'
+          author: ''
       }
     }
   },
   
    methods: {
-      addBook: function () {
-        booksRef.push(this.newBook);
-        this.newBook.title = '';
-        this.newBook.author = '';
-        this.newBook.url = 'http://';
+      addQuote: function () {
+        quotesRef.push(this.newQuote);
+        this.newQuote.title = '';
+        this.newQuote.author = '';
       },
-      removeBook: function (book) {
-        booksRef.child(book['.key']).remove()
-        toastr.success('Book removed successfully')
+      removeQuote: function (quote) {
+        quotesRef.child(quote['.key']).remove()
+        toastr.success('Quote removed successfully')
       }
     },
   
