@@ -29,25 +29,13 @@
 </template>
 
 <script>
-    import Firebase from 'firebase'
-
-let config = {
-    apiKey: "AIzaSyD8HTSyN2VZzuQJFxaFB9NBCxXeWsGz7fk",
-    authDomain: "quote-board-9b038.firebaseapp.com",
-    databaseURL: "https://quote-board-9b038.firebaseio.com",
-    projectId: "quote-board-9b038",
-    storageBucket: "quote-board-9b038.appspot.com",
-    messagingSenderId: "129676071799"
-  };
-  
-let app = Firebase.initializeApp(config)
-let db = app.database()
-let quotesRef = db.ref('quotes')
+import firebase from '@/components/firebase-init';
+import AddQuote from '@/components/AddQuote';
 
 export default {
   name: 'app',
   firebase: {
-    quotes: quotesRef
+    quotes: firebase.quotesRef
   },
   
   data () {

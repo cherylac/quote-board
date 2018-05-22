@@ -1,12 +1,5 @@
 import Vue from 'vue'
-import App from './App'
-
 import VueRouter from 'vue-router'
-Vue.use(VueRouter)
-
-import BootstrapVue from 'bootstrap-vue'
-Vue.use(BootstrapVue)
-
 import QuoteBoard from '@/components/QuoteBoard'
 import AddQuote from '@/components/AddQuote'
 import EditQuote from '@/components/EditQuote'
@@ -14,6 +7,10 @@ import SignUp from '@/components/SignUp'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import About from '@/components/About'
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(VueRouter)
+Vue.use(BootstrapVue)
 
 export default new Router({
   routes: [

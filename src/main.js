@@ -2,9 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import router from './router'
 
 // VueFire library (https://github.com/vuejs/vuefire) makes it easy to bind Firebase data to Vue.js data properties
 import VueFire from 'vuefire'
