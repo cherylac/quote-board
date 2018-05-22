@@ -10,7 +10,8 @@ var firebaseConfig = {
     storageBucket: "quote-board-9b038.appspot.com",
     messagingSenderId: "129676071799"
   };
-  firebase.initializeApp(firebaseConfig);
+  
+  let firebaseApp = firebase.initializeApp(firebaseConfig);
 
   const db = firebaseApp.database();
 

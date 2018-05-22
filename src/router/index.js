@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import QuoteBoard from '@/components/QuoteBoard'
 import AddQuote from '@/components/AddQuote'
 import About from '@/components/About'
