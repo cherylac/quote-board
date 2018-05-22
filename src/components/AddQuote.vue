@@ -26,34 +26,22 @@
 </template>
 
 <script>
-  import Firebase from 'firebase'
-  import toastr from 'toastr'
+import firebase from '@/components/firebase-init';
+import AddQuote from '@/components/AddQuote';  
+import toastr from 'toastr';
 
-let config = {
-    apiKey: "AIzaSyD8HTSyN2VZzuQJFxaFB9NBCxXeWsGz7fk",
-    authDomain: "quote-board-9b038.firebaseapp.com",
-    databaseURL: "https://quote-board-9b038.firebaseio.com",
-    projectId: "quote-board-9b038",
-    storageBucket: "quote-board-9b038.appspot.com",
-    messagingSenderId: "129676071799"
-  };
-  
-let app = Firebase.initializeApp(config)
-let db = app.database()
-let quotesRef = db.ref('quotes')
-
-export default {
-  name: 'app',
-  firebase: {
-    quotes: quotesRef
-  },
+  export default {
+    name: 'app',
+    firebase: {
+      quotes: firebase.quotesRef
+    },
   
   data () {
     return {
       newQuote: {
           title: '',
           author: '',
-          tags: '',
+          tags: [],
       }
     }
   },
@@ -63,7 +51,7 @@ export default {
         quotesRef.push(this.newQuote);
         this.newQuote.title = '';
         this.newQuote.author = '';
-        this.newQuote.tags = '';
+        this.newQuote.tags = [];
       },
       removeQuote: function (quote) {
         quotesRef.child(quote['.key']).remove()

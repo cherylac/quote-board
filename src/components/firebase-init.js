@@ -1,6 +1,8 @@
-import firebase from "firebase";
+import firebase from 'firebase/app';
 
-let firebaseConfig = {
+var Firebase = require("firebase");
+
+var firebaseConfig = {
     apiKey: "AIzaSyD8HTSyN2VZzuQJFxaFB9NBCxXeWsGz7fk",
     authDomain: "quote-board-9b038.firebaseapp.com",
     databaseURL: "https://quote-board-9b038.firebaseio.com",
@@ -8,11 +10,12 @@ let firebaseConfig = {
     storageBucket: "quote-board-9b038.appspot.com",
     messagingSenderId: "129676071799"
   };
-  const firebaseApp = Firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
+
   const db = firebaseApp.database();
 
   export default {
       db: db,
       quotesRef: db.ref("quotes"),
-    firebaseApp: firebaseApp
-  };
+      firebaseApp: firebaseApp
+    };

@@ -1,7 +1,17 @@
 <template>
   <div id="app">
     <header class="app-header">
-      <app-nav></app-nav>
+      <ul class="nav">
+        <li>
+          <router-link to="/">Quote Board</router-link>
+        </li>
+        <li>
+          <router-link to="/add">Add a Quote</router-link>
+        </li>
+        <li>
+          <router-link to="/about">About this App</router-link>
+        </li>
+      </ul>
     </header>
     <main class="container">
       <h1>Megan's Quote Board App</h1>
@@ -11,17 +21,13 @@
 </template>
 
 <script>
-import AppNav from './components/AppNav'
 
 export default {
   name: 'app',
-  components: {
-    AppNav
-  }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

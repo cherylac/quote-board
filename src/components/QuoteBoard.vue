@@ -43,18 +43,12 @@ export default {
       newQuote: {
           title: '',
           author: '',
-          tags: '',
+          tags: [],
       }
     }
   },
   
    methods: {
-      addQuote: function () {
-        quotesRef.push(this.newQuote);
-        this.newQuote.title = '';
-        this.newQuote.author = '';
-        this.newQuote.tags = '';
-      },
       removeQuote: function (quote) {
         quotesRef.child(quote['.key']).remove()
         toastr.success('Quote removed successfully')
