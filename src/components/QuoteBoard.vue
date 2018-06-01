@@ -1,30 +1,23 @@
 <template>
   <div class="component">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Quote Board</h3>
-      </div>
-      <div class="panel-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Quote</th>
-              <th>Author</th>
-              <th>Tags</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="quote in quotes">
-              <td>{{quote.title}}</td>
-              <td>{{quote.author}}</td>
-              <td>{{quote.tags}}</td>
-              <td><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <v-layout row>
+      <v-flex xs12>
+        <v-card v-for="quote in quotes">
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">{{quote.title}}</div>
+              <span class="grey--text">{{quote.author}}</span>
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-btn flat>{{quote.tags}}</v-btn>
+            <v-btn flat><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></v-btn>
+            <v-spacer></v-spacer>
+          </v-card-actions>
+        </v-card>
+        <v-spacer></v-spacer>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
@@ -43,6 +36,7 @@ export default {
       newQuote: {
           title: '',
           author: '',
+          tag: '',
           tags: [],
       }
     }

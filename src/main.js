@@ -3,6 +3,8 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 
 // VueFire library (https://github.com/vuejs/vuefire) makes it easy to bind Firebase data to Vue.js data properties
 import VueFire from 'vuefire';

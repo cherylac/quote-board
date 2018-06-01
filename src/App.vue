@@ -1,22 +1,25 @@
 <template>
   <div id="app">
-    <header class="app-header">
-      <ul class="nav">
-        <li>
-          <router-link to="/">Quote Board</router-link>
-        </li>
-        <li>
-          <router-link to="/add">Add a Quote</router-link>
-        </li>
-        <li>
-          <router-link to="/about">About this App</router-link>
-        </li>
-      </ul>
-    </header>
-    <main class="container">
-      <h1>Megan's Quote Board App</h1>
-      <router-view></router-view>
-    </main>
+    <v-app>
+      <v-toolbar dark-color="primary">
+        <header class="app-header">
+          <ul class="nav">
+            <li>
+              <v-toolbar-title><router-link to="/">Quote Board</router-link></v-toolbar-title>
+            </li>
+            <li>
+              <router-link to="/add">Add a Quote</router-link>
+            </li>
+            <li>
+              <router-link to="/about">About this App</router-link>
+            </li>
+          </ul>
+        </header>
+      </v-toolbar>
+      <main class="container">
+        <router-view></router-view>
+      </main>
+    </v-app>
   </div>
 </template>
 
@@ -29,10 +32,11 @@ export default {
 
 <style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 20px;
+  font-size: 2.0rem;
 }
 </style>
