@@ -3,8 +3,6 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import Vuetify from 'vuetify';
-Vue.use(Vuetify);
 
 // VueFire library (https://github.com/vuejs/vuefire) makes it easy to bind Firebase data to Vue.js data properties
 import VueFire from 'vuefire';
@@ -14,11 +12,10 @@ Vue.use(VueFire);
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
 
-let Bootstrap = require('bootstrap')
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({

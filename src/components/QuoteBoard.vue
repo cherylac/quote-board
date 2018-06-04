@@ -1,29 +1,20 @@
 <template>
-  <div class="component">
-    <v-layout row>
-      <v-flex xs12>
-        <v-card v-for="quote in quotes">
-          <v-card-title primary-title>
-            <div>
-              <div class="headline">{{quote.title}}</div>
-              <span class="grey--text">{{quote.author}}</span>
-            </div>
-          </v-card-title>
-          <v-card-actions>
-            <v-btn flat>{{quote.tags}}</v-btn>
-            <v-btn flat><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></v-btn>
-            <v-spacer></v-spacer>
-          </v-card-actions>
-        </v-card>
-        <v-spacer></v-spacer>
-      </v-flex>
-    </v-layout>
+  <div class="component mx-auto">
+    <b-card-group columns>
+        <b-card 
+          v-for="quote in quotes" :key="quote">
+          <h2 class="card-title">{{quote.title}}</h2>
+          <p class="card-text">~ {{quote.author}}</p>
+          <b-link slot="footer"><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></b-link>
+        </b-card>
+    </b-card-group>
   </div>
 </template>
 
 <script>
 import firebase from '@/components/firebase-init';
 import AddQuote from '@/components/AddQuote';
+import toastr from 'toastr';
 
 export default {
   name: 'app',
@@ -33,28 +24,30 @@ export default {
   
   data () {
     return {
-      newQuote: {
-          title: '',
-          author: '',
-          tag: '',
-          tags: [],
+      selected:null
       }
     }
-  },
+  };
   
-   methods: {
-      removeQuote: function (quote) {
-        quotesRef.child(quote['.key']).remove()
-        toastr.success('Quote removed successfully')
-      },
-    },
-  
-}
+  methods: {
+    //removeQuote: function (quote) {
+    //  firebase.quotesRef.child(quote['.key']).remove()
+    //  toastr.success('Quote removed successfully')
+    //  }
+    }
 </script>
 
 <style scoped>
-  .component {
-    background: #e8e8e8;
-    min-height: 400px;
+  .component {    
+    width: 90%;
+    min-height: auto;
+  }
+
+  h2 {
+    font-size: 2.0rem;
+  }
+
+  p {
+    font-size: 1.6rem;
   }
 </style>
