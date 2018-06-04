@@ -26,15 +26,15 @@ export default {
     return {
       selected:null
       }
-    }
-  };
+    },
   
   methods: {
-    //removeQuote: function (quote) {
-    //  firebase.quotesRef.child(quote['.key']).remove()
-    //  toastr.success('Quote removed successfully')
-    //  }
+    removeQuote: function (quote) {
+      firebase.quotesRef.child(quote['.key']).remove()
+      toastr.success('Quote removed successfully')
+      }
     }
+}
 </script>
 
 <style scoped>

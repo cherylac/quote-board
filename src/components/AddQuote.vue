@@ -1,8 +1,7 @@
 <template>
   <div class="component mx-auto">
     <b-form id="form" @submit="onSubmit" @reset="onReset" v-show="showForm" v-on:submit.prevent="validateForm">
-      <h2>Add a quote to the quote board</h2>
-      <p class="error" v-show="showError">Please enter a quote and author.</p>
+      <h2 class="mx-auto">Add a Quote to the Quote Board</h2>
       <b-form-group label="Quote:" label-for="quoteTitle">
         <b-form-textarea  input type="text"
                           id="title"
@@ -32,6 +31,7 @@
     <div class="success-message" v-show="!showForm">
       <h2>You have successfully added a new quote to the quote board!</h2>
     </div>
+    <p class="error" v-show="showError">Please enter a quote and author.</p>
   </div>
 </template>
 
@@ -47,11 +47,11 @@ import toastr from 'toastr';
     },
     data () {
       return {
+        showForm: true,
+        showError: false,
         newQuote: {
           title: '',
           author: '',
-          showForm: true,
-          showError: false,
         }
       }
     },
@@ -73,14 +73,12 @@ import toastr from 'toastr';
       onReset (evt) {
         evt.preventDefault();
         /* Reset our form values */
-        this.form.title = '';
-        this.form.author = '';
+        this.newQuote.title = '';
+        this.newQuote.author = '';
         /* Trick to reset/clear native browser form validation state */
         this.show = false;
-        this.$nextTick(() => { this.show = true });
       }
     },
-  
 }
 </script>
 
@@ -88,6 +86,9 @@ import toastr from 'toastr';
   .component {    
     width: 80%;
     min-height: auto;
+  }
+  h2 {
+    font-size: 2.0rem;
   }
 
 </style>
