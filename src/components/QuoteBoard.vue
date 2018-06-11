@@ -5,7 +5,7 @@
           v-for="quote in quotes" :key="quote">
           <h2 class="card-title">{{quote.title}}</h2>
           <p class="card-text">~ {{quote.author}}</p>
-          <b-link slot="footer"><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></b-link>
+          <b-link slot="footer"><span class="sr-only">Delete</span><span class="glyphicon glyphicon-trash" aria-hidden="true" v-on:click="removeQuote(quote)"></span></b-link>
         </b-card>
     </b-card-group>
   </div>

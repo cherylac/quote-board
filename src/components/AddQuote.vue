@@ -30,6 +30,7 @@
     </b-form>
     <div class="success-message" v-show="!showForm">
       <h2>You have successfully added a new quote to the quote board!</h2>
+      <h3><a href="#/">View the quote board</a></h3>
     </div>
     <p class="error" v-show="showError">Please enter a quote and author.</p>
   </div>
